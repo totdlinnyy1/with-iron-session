@@ -8,6 +8,7 @@ import useUser from '../../lib/useUser'
 import Layout from '../../components/Layout'
 import Avatar from '../../components/Avatar'
 import OwnOrders from '../../components/OwnOrders'
+import BuyerOrders from '../../components/BuyerOrders'
 
 const Profile = ({fetchedOrders}) => {
   const {user} = useUser({redirectTo: '/login'})
@@ -65,6 +66,12 @@ const Profile = ({fetchedOrders}) => {
                 {user.role === 'farmer' ? 'Список заказов' : 'Список товаров'}
               </h1>
             </div>
+            {user.role === 'farmer' && (
+              <BuyerOrders
+                fetchedOrders={orders}
+                handleClick={setShowPlaceMark}
+              />
+            )}
             <div className='button'>
               <button onClick={() => router.push('/profile/new')}>
                 {user.role === 'farmer' ? 'Выставить товар' : 'Создать заказ'}

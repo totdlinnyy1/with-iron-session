@@ -7,9 +7,9 @@ import {NotificationContainer} from 'react-notifications'
 import fetchJson from '../lib/fetchJson'
 import useUser from '../lib/useUser'
 
-const Layout = ({title, children}) => {
+const Layout = ({title, load, children}) => {
   const router = useRouter()
-  const { user, mutateUser } = useUser()
+  const {user, mutateUser} = useUser()
   const [show, setShow] = useState(true)
   const nav = useRef()
 
@@ -72,12 +72,16 @@ const Layout = ({title, children}) => {
                 <button onClick={() => router.push('/profile')}>
                   Личный кабинет
                 </button>
-                <a href="/api/logout"
-                   onClick={async (e) => {
-                     e.preventDefault()
-                     await mutateUser(fetchJson('/api/logout'))
-                     router.push('/login')
-                   }}><p>Выйти</p></a>
+                <a
+                  href='/api/logout'
+                  onClick={async e => {
+                    e.preventDefault()
+                    await mutateUser(fetchJson('/api/logout'))
+                    router.push('/login')
+                  }}
+                >
+                  <p>Выйти</p>
+                </a>
               </div>
             ) : (
               <div className='login-button'>

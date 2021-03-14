@@ -28,7 +28,7 @@ const Header = () => {
               <li>
                 <Link href="/profile-sg">
                   <a>
-                    <img src={user.avatarUrl} width={20} height={20} /> Profile
+                    <img src={user.avatar} width={20} height={20} /> Profile
                     (Static Generation, recommended)
                   </a>
                 </Link>

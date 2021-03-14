@@ -13,7 +13,6 @@ const LoginForm = () => {
       email: e.currentTarget.email.value,
       password: e.currentTarget.password.value
     }
-    console.log('Input: ', body)
     try {
       await mutateUser(
         fetchJson('/api/login', {

@@ -1,0 +1,58 @@
+.container
+  & .profile
+    height: 254px
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: $pink
+    & .avatar
+      width: 213px
+      height: 213px
+    & .data
+      color: $black
+      margin: 0 40px
+      & .name
+        display: flex
+        justify-content: space-between
+        align-items: center
+        h1
+          margin-right: 20px
+        svg:hover
+          color: #fff
+      p
+        cursor: pointer
+        transition: all 0.2s
+        &:hover
+          color: #fff
+  & .orders-block
+    height: 900px
+    width: 95%
+    margin: 20px auto
+    display: flex
+    justify-content: space-between
+    border-radius: 10px
+    background-color: $purple
+    & .map
+      width: 70%
+      height: 100%
+    & .list
+      width: 30%
+      padding: 15px
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      & .title
+        font-size: 20px
+        color: $black
+        text-align: center
+      & .button
+        width: 100%
+        text-align: center
+        button
+          @include redButton($width: 95%)
+          font-size: 24px
+  & .user-orders
+    margin-top: 100px
+    h1
+      margin-bottom: 40px
+      text-align: center

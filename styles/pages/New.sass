@@ -1,0 +1,45 @@
+.container
+  & .new
+    width: 100%
+    padding: 15px
+    h1
+      text-align: center
+      font-size: 35px
+    & .create
+      width: 100%
+      display: flex
+      justify-content: space-between
+      align-items: center
+      margin-top: 40px
+      & .data
+        width: 40%
+        form
+          & .geo-date
+            width: 100%
+            margin-top: 40px
+            display: flex
+            justify-content: space-between
+            input
+              height: 38px
+              border: 2px solid hsl(0, 0%, 80%)
+              padding: 5px
+              border-radius: 5px
+            & .address
+              display: flex
+              flex-direction: column
+              a
+                color: blue
+                &:hover
+                  cursor: pointer
+          & .button
+            width: 100%
+            text-align: center
+            margin-top: 40px
+            button
+              @include redButton($width: 60%)
+              font-size: 20px
+      & .map
+        height: 600px
+        width: 55%
+
+

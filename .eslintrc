@@ -1,0 +1,21 @@
+{
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "rules": {
+    "semi": "off",
+    "require-jsdoc": "off",
+    "arrow-parens": "off",
+    "comma-dangle": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
+}

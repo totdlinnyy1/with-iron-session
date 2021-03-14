@@ -1,0 +1,33 @@
+.orders
+  width: 100%
+  & .order
+    width: 100%
+    height: 132px
+    margin: 20px 0
+    padding: 10px
+    border-radius: 20px
+    background: #fff
+    & .info
+      &__user
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-bottom: 10px
+        & .data
+          display: flex
+          align-items: center
+          & .avatar
+            height: 50px
+            width: 50px
+          & .name
+            font-size: 20px
+            margin: 0 15px
+        & .more
+          button
+            @include redButton($width: 120px, $height: 45px)
+      &__order
+        display: flex
+        overflow: hidden
+        flex-wrap: wrap
+        p
+          margin: 0 10px 0 0

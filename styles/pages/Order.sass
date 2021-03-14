@@ -1,0 +1,57 @@
+.container
+  & .show-order
+    h1
+      color: $black
+      text-align: center
+      font-size: 40px
+      margin-bottom: 20px
+    & .order
+      background: $pink
+      padding: 15px
+      width: 40%
+      margin: 0 auto
+      display: flex
+      flex-direction: column
+      align-items: center
+      p
+        font-size: 20px
+      & .owner
+        display: flex
+        flex-direction: column
+        align-items: center
+        margin-bottom: 20px
+        h2
+          margin: 10px 0
+          text-align: center
+        p
+          label
+            color: #fff
+        & .avatar
+          width: 213px
+          height: 213px
+      & .products
+        width: 70%
+        height: 150px
+        padding: 10px
+        background: $purple
+        display: flex
+        flex-wrap: wrap
+        border-radius: 10px
+        margin-bottom: 40px
+        p
+          max-width: content-box
+          height: 35px
+          margin-right: 10px
+          padding: 5px
+          border-radius: 10px
+          background: #fff
+      & .date
+        margin-bottom: 20px
+      & .address
+        margin-bottom: 40px
+      & .button
+        width: 70%
+        button
+          @include redButton($width: 100%)
+          font-size: 20px
+

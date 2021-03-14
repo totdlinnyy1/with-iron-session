@@ -1,0 +1,160 @@
+.container
+  & .header
+    display: flex
+    align-items: center
+    padding: 15px
+
+    & .info
+      width: 65%
+
+      & .title
+        h1
+          font-weight: 400
+          font-size: 42px
+
+          span
+            font-size: 62px
+            font-weight: 700
+
+      & .statistics
+        width: 60%
+        display: flex
+        justify-content: space-between
+        margin-top: 30px
+
+        h3
+          font-weight: 700
+          font-size: 40px
+          color: $red
+
+        p
+          font-size: 20px
+
+      & .button-group
+        width: 70%
+        margin-top: 40px
+        display: flex
+        justify-content: space-between
+
+        & .farmer-button
+          @include redButton($width: 100%)
+          font-size: 20px
+          margin-right: 5px
+
+        & .buyer-button
+          @include whiteButton($width: 100%)
+          font-size: 20px
+
+  & .info-block
+    display: flex
+    align-items: center
+    justify-content: space-around
+    padding: 30px 15px
+
+    & .text
+      width: 65%
+
+      h1
+        font-size: 42px
+        background-color: rgba(255, 255, 255, 0.5)
+        padding: 10px
+        border-radius: 10px
+        margin-bottom: 20px
+
+    &__buyer
+      background-color: $pink
+
+      & .text
+        button
+          @include infoButton($width: 40%, $color: $purple)
+          font-size: 20px
+
+    &__farmer
+      background-color: $purple
+
+      & .text
+        button
+          @include infoButton($width: 40%, $color: $pink)
+          font-size: 20px
+
+
+@media screen and (max-width: 1074px)
+  .container
+    & .header
+      & .info
+        & .title
+          h1
+            span
+              font-size: 50px
+
+        & .statistics
+          width: 80%
+
+        & .button-group
+          width: 100%
+
+@media screen and (max-width: 928px)
+  .container
+    & .header
+      flex-direction: column
+      align-items: start
+
+      & .info
+        width: 100%
+
+        & .statistics
+          width: 65%
+
+      & .image
+        align-self: center
+
+    & .info-block
+      & .text
+        width: 90%
+
+@media screen and (max-width: 760px)
+  .container
+    & .info-block
+      display: block
+
+      & .image
+        display: none
+
+      & .text
+        width: 100%
+
+        h1
+          font-size: 35px
+
+        button
+          width: 60%
+
+@media screen and (max-width: 530px)
+  .container
+    & .header
+      & .info
+        & .title
+          h1
+            font-size: 30px
+            line-height: 35px
+
+            span
+              font-size: 40px
+
+        & .statistics
+          width: 100%
+
+        & .button-group
+          flex-direction: column
+
+          button
+            margin: 10px 0
+
+    & .info-block
+      & .text
+        h1
+          font-size: 28px
+          line-height: 30px
+
+        button
+          width: 100%

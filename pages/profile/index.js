@@ -7,6 +7,7 @@ import Order from '../../models/Order'
 import useUser from '../../lib/useUser'
 import Layout from '../../components/Layout'
 import Avatar from '../../components/Avatar'
+import OwnOrders from '../../components/OwnOrders'
 
 const Profile = ({fetchedOrders}) => {
   const {user} = useUser({redirectTo: '/login'})
@@ -71,7 +72,9 @@ const Profile = ({fetchedOrders}) => {
             </div>
           </div>
         </div>
-        <div className='user-orders'></div>
+        <div className='user-orders'>
+          <OwnOrders role={user.role} id={user.id} />
+        </div>
       </div>
     </Layout>
   )

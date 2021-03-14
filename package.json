@@ -16,6 +16,7 @@
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-hook-form": "^6.15.4",
     "react-icons": "^4.2.0",
     "react-input-mask": "^2.0.4",
     "react-notifications": "^1.7.2",

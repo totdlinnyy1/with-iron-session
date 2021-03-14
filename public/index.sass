@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap')
+@import "variables"
+@import "mixins"
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body
+  font-family: 'Roboto', sans-serif
+  background-image: url("../public/background.webp")
+
+p
+  margin: 0
+  bottom: 0
+
+.container-block
+  width: 97%
+  background-color: #fff
+  margin: 20px auto
+
+//components
+@import "components/Layout"
+
+//pages
+@import "pages/Home"

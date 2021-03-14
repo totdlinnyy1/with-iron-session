@@ -1,52 +1,27 @@
-import { useState } from 'react'
+import Image from 'next/image'
 import useUser from '../lib/useUser'
 import Layout from '../components/Layout'
-import Form from '../components/Form'
-import fetchJson from '../lib/fetchJson'
+import LoginForm from '../components/LoginForm'
 
 const Login = () => {
-  const { mutateUser } = useUser({
-    redirectTo: '/profile-sg',
-    redirectIfFound: true,
-  })
+  const user = useUser({redirectTo: '/profile', redirectIfFound: true})
 
-  const [errorMsg, setErrorMsg] = useState('')
-
-  async function handleSubmit(e) {
-    e.preventDefault()
-
-    const body = {
-      username: e.currentTarget.username.value,
-    }
-
-    try {
-      await mutateUser(
-        fetchJson('/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body),
-        })
-      )
-    } catch (error) {
-      console.error('An unexpected error happened:', error)
-      setErrorMsg(error.data.message)
-    }
+  if (!user.user) {
+    return <Layout title='Вход' />
   }
 
   return (
-    <Layout>
-      <div className="login">
-        <Form isLogin errorMessage={errorMsg} onSubmit={handleSubmit} />
+    <Layout title='Вход'>
+      <div className='login'>
+        <div className='info'>
+          <h1>Приветствуем!</h1>
+          <Image src='/logo.png' width={515} height={415} unsized={false} />
+        </div>
+        <div className='form'>
+          <h1>Вход</h1>
+          <LoginForm />
+        </div>
       </div>
-      <style jsx>{`
-        .login {
-          max-width: 21rem;
-          margin: 0 auto;
-          padding: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-      `}</style>
     </Layout>
   )
 }

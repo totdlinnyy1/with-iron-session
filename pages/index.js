@@ -1,61 +1,82 @@
+import {useRouter} from 'next/router'
+import Image from 'next/image'
 import Layout from '../components/Layout'
 
-const Home = () => (
-  <Layout>
-    <h1>
-      <img
-        src="/GitHub-Mark-32px.png"
-        width="32"
-        height="32"
-        style={{ marginRight: '.3em', verticalAlign: 'middle' }}
-      />
-      <a href="https://github.com/vvo/next-iron-session">next-iron-session</a> -
-      Authentication example
-    </h1>
-
-    <p>
-      This example creates an authentication system that uses a{' '}
-      <b>signed and encrypted cookie to store session data</b>.
-    </p>
-
-    <p>
-      It uses current best practices as for authentication in the Next.js
-      ecosystem:
-      <br />
-      1. <b>no `getInitialProps`</b> to ensure every page is static
-      <br />
-      2. <b>`useUser` hook</b> together with `
-      <a href="https://swr.now.sh/">swr`</a> for data fetching
-    </p>
-
-    <h2>Features</h2>
-
-    <ul>
-      <li>Logged in status synchronized between browser windows/tabs</li>
-      <li>Layout based on logged in status</li>
-      <li>All pages are static</li>
-      <li>Session data is signed and encrypted in a cookie</li>
-    </ul>
-
-    <h2>Steps to test the functionality:</h2>
-
-    <ol>
-      <li>Click login and enter your GitHub username.</li>
-      <li>
-        Click home and click profile again, notice how your session is being
-        used through a token stored in a cookie.
-      </li>
-      <li>
-        Click logout and try to go to profile again. You'll get redirected to
-        the `/login` route.
-      </li>
-    </ol>
-    <style jsx>{`
-      li {
-        margin-bottom: 0.5rem;
-      }
-    `}</style>
-  </Layout>
-)
+const Home = () => {
+  const router = useRouter()
+  return (
+    <Layout title='Главная'>
+      <div className='container'>
+        <div className='header'>
+          <div className='info'>
+            <div className='title'>
+              <h1>
+                <span>«Мой фермер»</span> - оналйн- сервис для поиска и продажи
+                фрмерской продукции.
+              </h1>
+            </div>
+            <div className='statistics'>
+              <div className='number'>
+                <h3>1000</h3>
+                <p>покупателей</p>
+              </div>
+              <div className='number'>
+                <h3>900</h3>
+                <p>заказов</p>
+              </div>
+              <div className='number'>
+                <h3>200</h3>
+                <p>фермеров</p>
+              </div>
+            </div>
+            <div className='button-group'>
+              <button
+                className='farmer-button'
+                onClick={() => router.push('/farmer-signup')}
+              >
+                Стать фермером
+              </button>
+              <button
+                className='buyer-button'
+                onClick={() => router.push('/buyer-signup')}
+              >
+                Сделать заказ
+              </button>
+            </div>
+          </div>
+          <div className='image'>
+            <Image src='/logo.png' width={615} height={515} />
+          </div>
+        </div>
+        <div className='info-block info-block__buyer'>
+          <div className='image'>
+            <Image src='/farmer.png' width={301} height={603} />
+          </div>
+          <div className='text'>
+            <h1>
+              Здесь вы можете приобрести фермерские продукты без посредников!
+            </h1>
+            <button onClick={() => router.push('/buyer-signup')}>
+              Сделать заказ
+            </button>
+          </div>
+        </div>
+        <div className='info-block info-block__farmer'>
+          <div className='text'>
+            <h1>
+              Если Вы - фермер, то здесь Вы сможете продать свою продукцию!
+            </h1>
+            <button onClick={() => router.push('/farmer-signup')}>
+              Стать фермером
+            </button>
+          </div>
+          <div className='image'>
+            <Image src='/farmer.png' width={301} height={603} />
+          </div>
+        </div>
+      </div>
+    </Layout>
+  )
+}
 
 export default Home

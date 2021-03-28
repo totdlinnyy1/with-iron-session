@@ -6,9 +6,6 @@
   padding: 15px
   background-color: #fff
 
-  h1
-    font-size: 40px
-
   & .info
     width: 50%
     text-align: center
@@ -21,3 +18,24 @@
   & .form
     width: 40%
     text-align: center
+
+@media screen and (max-width: 928px)
+  .login
+    flex-direction: column
+    align-items: center
+    & .info
+      width: 100%
+      margin-bottom: 30px
+      img
+        height: 300px
+    & .form
+      width: 80%
+
+@media screen and (max-width: 436px)
+  .login
+    & .info
+      display: none
+    & .form
+      h1
+        font-size: 25px
+      width: 100%

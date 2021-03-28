@@ -3,7 +3,7 @@ import {useRouter} from 'next/router'
 import Avatar from './Avatar'
 
 const BuyerOrders = ({fetchedOrders, handleClick}) => {
-  const [orders, setOrders] = useState(fetchedOrders ? fetchedOrders : null)
+  const [orders] = useState(fetchedOrders ? fetchedOrders : null)
 
   const router = useRouter()
 

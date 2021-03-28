@@ -1,7 +1,11 @@
+import {useState} from 'react'
 import useUser from '../lib/useUser'
 import fetchJson from '../lib/fetchJson'
 
 const LoginForm = () => {
+
+  const [disabled, setDisabled] = useState(false)
+
   const {mutateUser} = useUser({
     redirectTo: '/profile',
     redirectIfFound: true
@@ -9,11 +13,11 @@ const LoginForm = () => {
 
   const onSubmit = async e => {
     e.preventDefault()
+    setDisabled(true)
     const body = {
       email: e.currentTarget.email.value,
       password: e.currentTarget.password.value
     }
-    console.log('Input: ', body)
     try {
       await mutateUser(
         fetchJson('/api/login', {
@@ -24,6 +28,7 @@ const LoginForm = () => {
       )
     } catch (error) {
       console.error('An unexpected error happened:', error)
+      setDisabled(false)
     }
   }
 
@@ -36,6 +41,7 @@ const LoginForm = () => {
         name='email'
         placeholder='Email'
         required
+        disabled={disabled}
       />
       <p>Пароль:</p>
       <input
@@ -44,8 +50,9 @@ const LoginForm = () => {
         name='password'
         placeholder='Пароль'
         required
+        disabled={disabled}
       />
-      <button type='submit'>Войти</button>
+      <button type='submit' disabled={disabled}>Войти</button>
     </form>
   )
 }

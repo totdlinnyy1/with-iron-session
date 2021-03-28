@@ -1,6 +1,8 @@
 import { SWRConfig } from 'swr'
 import fetch from '../lib/fetchJson'
 import 'react-notifications/lib/notifications.css'
+import 'nprogress/nprogress.css'
+import NextNProgress from '../components/NextNProgress'
 import '../styles/index.sass'
 
 function MyApp({ Component, pageProps }) {
@@ -13,6 +15,7 @@ function MyApp({ Component, pageProps }) {
         },
       }}
     >
+      <NextNProgress />
       <Component {...pageProps} />
     </SWRConfig>
   )

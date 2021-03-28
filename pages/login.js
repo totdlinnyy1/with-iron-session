@@ -1,15 +1,8 @@
 import Image from 'next/image'
-import useUser from '../lib/useUser'
 import Layout from '../components/Layout'
 import LoginForm from '../components/LoginForm'
 
 const Login = () => {
-  const user = useUser({redirectTo: '/profile', redirectIfFound: true})
-
-  if (!user.user) {
-    return <Layout title='Вход' />
-  }
-
   return (
     <Layout title='Вход'>
       <div className='login'>

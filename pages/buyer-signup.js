@@ -1,14 +1,8 @@
 import Image from 'next/image'
-import useUser from '../lib/useUser'
 import Layout from '../components/Layout'
 import SignUpForm from '../components/SignUpForm'
 
 const BuyerSignUp = () => {
-  const user = useUser({redirectTo: '/profile', redirectIfFound: true})
-
-  if (!user.user) {
-    return <Layout title='Регистрация' />
-  }
   return (
     <Layout title='Регистрация'>
       <div className='login'>

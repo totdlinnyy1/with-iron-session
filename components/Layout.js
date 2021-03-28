@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react'
+import {useRef, useState, useEffect} from 'react'
 import Head from 'next/head'
 import {useRouter} from 'next/router'
 import Link from 'next/link'
@@ -23,6 +23,10 @@ const Layout = ({title, load, children}) => {
     await fetch('/api/logout')
     router.push('/login')
   }
+
+  useEffect(() => {
+    document.body.style.overflowY = 'auto'
+  }, [])
 
   return (
     <div className='layout'>

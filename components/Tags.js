@@ -1,6 +1,6 @@
 
 
-const Tags = ({data, register}) => {
+const Tags = ({data, register, disabled}) => {
   return (
     <div className='tags'>
       {data && data.map((value, key) => (
@@ -13,6 +13,7 @@ const Tags = ({data, register}) => {
             ref={register}
             placeholder={value.amount}
             required
+            disabled={disabled}
           />
         </div>
       ))}

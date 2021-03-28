@@ -39,25 +39,22 @@ const Profile = ({fetchedOrders}) => {
         <div className='orders-block'>
           <div className='map'>
             <YMaps>
-              <div style={{width: '100%', height: '100%'}}>
-                <Map
-                  defaultState={{center: [55.75, 37.57], zoom: 4}}
-                  state={{
-                    center: showPlaceMark ? showPlaceMark : [55.75, 37.57],
-                    zoom: 15
-                  }}
-                  width='100%'
-                  height='100%'
-                >
-                  {orders &&
-                    user.role === 'farmer' &&
-                    !showPlaceMark &&
-                    orders.map((value, key) => (
-                      <Placemark key={key} geometry={value.coordinates} />
-                    ))}
-                  {showPlaceMark && <Placemark geometry={showPlaceMark} />}
-                </Map>
-              </div>
+              <Map
+                defaultState={{center: [55.75, 37.57], zoom: 4}}
+                state={{
+                  center: showPlaceMark ? showPlaceMark : [55.75, 37.57],
+                  zoom: 15
+                }}
+                width='100%'
+              >
+                {orders &&
+                user.role === 'farmer' &&
+                !showPlaceMark &&
+                orders.map((value, key) => (
+                  <Placemark key={key} geometry={value.coordinates} />
+                ))}
+                {showPlaceMark && <Placemark geometry={showPlaceMark} />}
+              </Map>
             </YMaps>
           </div>
           <div className='list'>

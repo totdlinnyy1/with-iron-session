@@ -1,7 +1,7 @@
 import Select from 'react-select'
 import {groupedOptions} from '../data/products'
 
-const SelectProducts = ({onChange}) => {
+const SelectProducts = ({onChange, disabled}) => {
 
   const groupStyles = {
     display: 'flex',
@@ -33,6 +33,7 @@ const SelectProducts = ({onChange}) => {
     <Select
       placeholder='Выберете товар'
       isMulti
+      isDisabled={disabled}
       options={groupedOptions}
       className="basic-multi-select"
       classNamePrefix="select"

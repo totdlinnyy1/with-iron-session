@@ -36,6 +36,7 @@ export default withSession(async (req, res) => {
           role: updateUser.role,
           id: updateUser._id
         }
+        req.session.destroy()
         req.session.set('user', session)
         await req.session.save()
         res.json(user)

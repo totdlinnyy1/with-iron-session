@@ -17,12 +17,14 @@ const New = () => {
   const [address, setAddress] = useState('')
   const [coordinates, setCoordinates] = useState([55.75, 37.57])
   const [placeMark, setPlaceMark] = useState(null)
+  const [disabled, setDisabled] = useState(false)
 
   if (!user || user.isLoggedIn === false) {
     return <Layout title='loading...' />
   }
 
   const onHandleClick = async () => {
+    setDisabled(true)
     if (address) {
       await fetch(
         `https://geocode-maps.yandex.ru/1.x/?format=json&apikey=02130a82-c368-4497-b079-9609641139cd&geocode=${address
@@ -40,12 +42,17 @@ const New = () => {
           setCoordinates(coord)
           setPlaceMark(coord)
           setAddress(adr)
+          setDisabled(false)
         })
-    } else NotificationManager.warning('Напишите адрес')
+    } else {
+      setDisabled(false)
+      NotificationManager.warning('Напишите адрес')
+    }
   }
 
   const onSubmit = async data => {
     if (selectedOptions) {
+      setDisabled(true)
       if (placeMark) {
         await onHandleClick()
         const products = []
@@ -83,7 +90,10 @@ const New = () => {
             NotificationManager.error('Что-то пошло не так!')
           }
         })
-      } else NotificationManager.warning('Поставьте метку')
+      } else {
+        setDisabled(false)
+        NotificationManager.warning('Поставьте метку')
+      }
     } else NotificationManager.warning('Выберете товары')
   }
 
@@ -102,8 +112,11 @@ const New = () => {
                 <>
                   <h3>Выберите товары</h3>
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <SelectProducts onChange={setSelectedOptions} />
-                    <Tags data={selectedOptions} register={register} />
+                    <SelectProducts
+                      onChange={setSelectedOptions}
+                      disabled={disabled}
+                    />
+                    <Tags data={selectedOptions} register={register} disabled={disabled} />
                     <div className='geo-date'>
                       <div className='address'>
                         <input
@@ -115,6 +128,7 @@ const New = () => {
                           ref={register({
                             required: 'Это поле обязательно к заполнению'
                           })}
+                          disabled={disabled}
                         />
                         <a onClick={onHandleClick}>Поставить метку</a>
                       </div>
@@ -125,10 +139,11 @@ const New = () => {
                         ref={register({
                           required: 'Это поле обязательно к заполнению'
                         })}
+                        disabled={disabled}
                       />
                     </div>
                     <div className='button'>
-                      <button type='submit'>Создать заказ</button>
+                      <button type='submit' disabled={disabled}>Создать заказ</button>
                     </div>
                   </form>
                 </>

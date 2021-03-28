@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import {useRouter} from 'next/router'
 import NotificationManager from 'react-notifications/lib/NotificationManager'
 import useUser from '../../lib/useUser'
@@ -7,6 +8,8 @@ import Layout from '../../components/Layout'
 import Avatar from '../../components/Avatar'
 
 const Edit = () => {
+  const [disabled, setDisabled] = useState(false)
+
   const {user, mutateUser} = useUser({redirectTo: '/login'})
   const router = useRouter()
 
@@ -16,6 +19,7 @@ const Edit = () => {
 
   const onSubmit = async e => {
     e.preventDefault()
+    setDisabled(true)
     const body = {
       name: e.currentTarget.name.value,
       lastname: e.currentTarget.lastname.value,
@@ -50,8 +54,12 @@ const Edit = () => {
         router.push('/profile')
       } catch (error) {
         console.error('An unexpected error happened:', error)
+        setDisabled(false)
       }
-    } else return NotificationManager.warning('Ни одного поля не заполнено!')
+    } else {
+      setDisabled(false)
+      NotificationManager.warning('Ни одного поля не заполнено!')
+    }
   }
 
   return (
@@ -71,13 +79,14 @@ const Edit = () => {
           <div className='form'>
             <form onSubmit={onSubmit}>
               <p>Имя:</p>
-              <input type='text' name='name' id='name' placeholder='Имя' />
+              <input type='text' name='name' id='name' placeholder='Имя' disabled={disabled} />
               <p>Фамилия:</p>
               <input
                 type='text'
                 name='lastname'
                 id='lastname'
                 placeholder='Фамилия'
+                disabled={disabled}
               />
               <div className='file-upload'>
                 <p>Аватар:</p>
@@ -86,6 +95,7 @@ const Edit = () => {
                   id='avatar'
                   name='avatar'
                   accept='image/jpeg,image/png,image/gif'
+                  disabled={disabled}
                 />
               </div>
               <p>Подтвердите пароль:</p>
@@ -95,9 +105,10 @@ const Edit = () => {
                 name='password'
                 placeholder='Пароль'
                 required
+                disabled={disabled}
               />
               <div className='button-container'>
-                <button type='submit'>Изменить</button>
+                <button type='submit' disabled={disabled}>Изменить</button>
               </div>
             </form>
           </div>

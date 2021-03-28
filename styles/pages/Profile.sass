@@ -6,8 +6,9 @@
     align-items: center
     background-color: $pink
     & .avatar
-      width: 213px
       height: 213px
+      min-width: 213px
+      max-width: 213px
     & .data
       color: $black
       margin: 0 40px
@@ -25,7 +26,7 @@
         &:hover
           color: #fff
   & .orders-block
-    height: 900px
+    min-height: 900px
     width: 95%
     margin: 20px auto
     display: flex
@@ -34,7 +35,10 @@
     background-color: $purple
     & .map
       width: 70%
-      height: 100%
+      min-height: 900px
+      div
+        width: 70%
+        min-height: 900px
     & .list
       width: 30%
       padding: 15px
@@ -56,3 +60,34 @@
     h1
       margin-bottom: 40px
       text-align: center
+
+@media screen and (max-width: 768px)
+  .container
+    & .profile
+      flex-direction: column
+      & .avatar
+        height: 150px
+        min-width: 150px
+        max-width: 150px
+      & .data
+        & .name
+          font-size: 14px
+    & .orders-block
+      min-height: fit-content
+      flex-direction: column
+      justify-content: start
+      & .map
+        width: 100%
+        min-height: 300px
+        div
+          width: 100%
+          min-height: 300px
+      & .list
+        width: 100%
+        align-items: center
+        & .title
+          font-size: 15px
+        & .button
+          max-width: 60%
+          button
+            font-size: 20px
